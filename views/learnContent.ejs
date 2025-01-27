@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./master/head.ejs') %>
+    <title>LinuxHub | home</title>
+</head>
+<body>
+    <!--navbar-->
+    <%- include('./master/header.ejs') %>
+    <!-- Title page Header -->
+    <nav class="text-center text-light ctWallPaper justify-content-center align-items-center d-flex">
+        <h1 id="contentType" class="titlePage">Tutorials</h1>
+    </nav>
+    <nav class="container-fluid center py-3 pt-2 text-center">
+        <!-- choose the type of learning content -->
+        <div class="btn-group btn-group-toggle bg-dark mb-3 w-100 rounded types" data-toggle="buttons">
+            <label class="type jumbotron" id="tuto" onclick="chTypeTitle('tutorials')">Tutorials</label>
+            <label class="type" id="quiz" onclick="chTypeTitle('quizzes')">Quizzes</label>
+            <label class="type" id="cours" onclick="chTypeTitle('Courses')">Courses</label>
+        </div>
+        <!-- search bar (filter) -->
+        <div class="input-group mb-3 d-flex no-wrap searchBar">
+            <div class="input-group-prepend w-100">
+              <button class="btn btn-outline-secondary" type="button" disabled>
+                <img src="images/icons/filter.png" width="20px">
+              </button>
+              <input type="text" id="search" class="form-control w-100" placeholder="I want to search about ...">
+            </div>
+            <input type="button" onclick="filter('arabic')" value="Arabic" class="btn btn-outline-success filter">
+            <input type="button" onclick="filter('english')" value="English" class="btn btn-outline-warning filter">
+            <input type="button" onclick="filter('french')" value="French" class="btn btn-outline-primary filter">
+            <input type="button" onclick="filter('spanish')" value="Spanish" class="btn btn-outline-danger filter">
+            <input type="button" onclick="filter(' ')" value="All" class="btn btn-outline-info filter">
+        </div>
+        <!-- list -->
+        <div class="listCards center" id="list">
+            <learn-card img="HTML&CSS.png" title="What's Linux ?"tags="#english #basics"></learn-card>
+            <learn-card img="HTML&CSS.png" title="virtual box"tags="#english #basics"></learn-card>
+            <learn-card img="HTML&CSS.png" title="ubutnu"tags="#arabic #basics"></learn-card>
+            <learn-card img="HTML&CSS.png" title="Packet Tracer"tags="#english #basics"></learn-card>
+            <learn-card img="HTML&CSS.png" title="intro to networking"tags="#spanish #basics"></learn-card>
+            <learn-card img="HTML&CSS.png" title="pentration test"tags="#english #basics"></learn-card>
+            <learn-card img="HTML&CSS.png" title="bug bounty"tags="#arabic #basics"></learn-card>
+            <learn-card img="HTML&CSS.png" title="server management"tags="#french #basics"></learn-card>
+        </div>
+    </nav>
+
+    <!-- footer -->
+    <%- include('./master/footer.ejs') %>
+</body>
+</html>
