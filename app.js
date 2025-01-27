@@ -5,10 +5,11 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mysql = require("mysql")
 const qs = require("querystring")
+const http = require("http")
 
 // routes
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var learnRouter = require('./routes/learnContent');
 const { stat } = require('fs');
 
 var app = express();
@@ -51,8 +52,13 @@ app.post('/',(req,res)=>{
   req.on('end',()=>{
     let result = qs.parse(body)
     connection.query(
-      `inser into form() value("${result.name}","${result.email}","${result.message}")`,
-      function(errors,results,fields){console.log("sent")})
+      `insert into form() value("${result.name}","${result.email}","${result.message}")`,
+      function(errors,results,fields){
+        setInterval(function(){
+          res.redirect("/")
+        },1500)
+        console.log("message sent")
+      })
   })
 })
 
@@ -67,7 +73,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/learn', learnRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

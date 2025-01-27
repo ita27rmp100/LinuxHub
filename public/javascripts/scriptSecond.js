@@ -12,9 +12,11 @@ function filter(search){
         }
     )
 }
+// filter results
 $("document").ready(
     function(){
         $(".type").addClass("btn-light m-1 p-1 rounded") // Content selection bar
+        filter(document.title)
         // filter search
         $("#search").keyup(
             function() {

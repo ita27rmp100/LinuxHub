@@ -86,32 +86,11 @@ $("document").ready(
         $(".membersList").scrollLeft(0);
         // Handle form submission
         $("#contactForm").on("submit", function (e) {
-            e.preventDefault();
-
-            // Validate inputs
-            const name = $("#name").val().trim();
-            const email = $("#email").val().trim();
-            const message = $("#message").val().trim();
-
-            if (!name || !email || !message) {
-                alert("Please fill out all fields!");
-                return;
-            }
-
             // Simulate success
-            $("#contactForm")[0].reset(); // Reset the form
             $("#successMessage").css({
                 "opacity":"1",
                 "z-index":'4221',
             }); // Show success message
-
-            // Hide the success message after 5 seconds
-            setTimeout(() => {
-                $("#successMessage").css({
-                    "opacity":"0",
-                    "z-index":'0',
-                });
-            }, 5000);
         });
     }
 )

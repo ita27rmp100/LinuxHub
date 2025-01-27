@@ -11,7 +11,7 @@ let connection = sql.createConnection({
   database:'linuxhub'
 })
 /* GET home page. */
-let membersPart = '' , values = [] , social = {github:[],insta:[],linkdein:[]}
+let membersPart = '' , values = [] , social = {github:[],insta:[],linkdein:[]} , fname , rank , image
 router.get('/', function(req, res, next) {
   // getting statistics :
   connection.query("select * from statistics",function(error,results,fields){
@@ -26,7 +26,7 @@ router.get('/', function(req, res, next) {
     social.insta = results.map(row => row.insta)
     social.linkdein = results.map(row => row.linkdeIn)
   })
-  for(i=0;i<Object.keys(fname).length;i++){
+  for(i=0;i<Object.keys(fname).length+1;i++){
     membersPart += `<new-member name="${fname[i]} " role="${rank[i]}" img="${image[i]}"
                     link1="${social.github[i]}" social1="instagram"
                     link2="${social.insta[i]}" social2="github"
