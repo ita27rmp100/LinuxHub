@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/general_style.css">
+    <link rel="stylesheet" href="styles/learningContent.css">
+    <link rel="icon" href="images/LinuxHub.png">
+    <title>LinuxHub | home</title>
+</head>
+<body>
+    <!--navbar-->
+    <nav class="navbar except-height navbar-expand-lg navbar-light bg-light">
+        <img src="images/LinuxHub.png" alt="LinuxHub" width="65">
+        <a class="navbar-brand" href="#">LinuxHub</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Quiz</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Tutorials</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Courses</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+    <!-- Title page Header -->
+    <nav class="text-center text-light ctWallPaper justify-content-center align-items-center d-flex">
+        <h1 id="contentType" class="titlePage">Tutorials</h1>
+    </nav>
+    <nav class="container-fluid center py-3 pt-2 text-center">
+        <!-- choose the type of learning content -->
+        <div class="btn-group btn-group-toggle bg-dark mb-3 w-100 rounded types" data-toggle="buttons">
+            <label class="type jumbotron" id="tuto" onclick="chTypeTitle('tutorials')">Tutorials</label>
+            <label class="type" id="quiz" onclick="chTypeTitle('quizzes')">Quizzes</label>
+            <label class="type" id="cours" onclick="chTypeTitle('Courses')">Courses</label>
+        </div>
+        <!-- search bar (filter) -->
+        <div class="input-group mb-3 d-flex no-wrap searchBar">
+            <div class="input-group-prepend w-100">
+              <button class="btn btn-outline-secondary" type="button" disabled>
+                <img src="images/icons/filter.png" width="20px">
+              </button>
+              <input type="text" id="search" class="form-control w-100" placeholder="I want to search about ...">
+            </div>
+            <input type="button" onclick="filter('arabic')" value="Arabic" class="btn btn-outline-success filter">
+            <input type="button" onclick="filter('english')" value="English" class="btn btn-outline-warning filter">
+            <input type="button" onclick="filter('french')" value="French" class="btn btn-outline-primary filter">
+            <input type="button" onclick="filter('spanish')" value="Spanish" class="btn btn-outline-danger filter">
+            <input type="button" onclick="filter(' ')" value="All" class="btn btn-outline-info filter">
+        </div>
+        <!-- list -->
+        <div class="listCards center" id="list">
+            <learn-card img="HTML&CSS.png" title="What's Linux ?"tags="#english #basics"></learn-card>
+            <learn-card img="HTML&CSS.png" title="virtual box"tags="#english #basics"></learn-card>
+            <learn-card img="HTML&CSS.png" title="ubutnu"tags="#arabic #basics"></learn-card>
+            <learn-card img="HTML&CSS.png" title="Packet Tracer"tags="#english #basics"></learn-card>
+            <learn-card img="HTML&CSS.png" title="intro to networking"tags="#spanish #basics"></learn-card>
+            <learn-card img="HTML&CSS.png" title="pentration test"tags="#english #basics"></learn-card>
+            <learn-card img="HTML&CSS.png" title="bug bounty"tags="#arabic #basics"></learn-card>
+            <learn-card img="HTML&CSS.png" title="server management"tags="#french #basics"></learn-card>
+        </div>
+    </nav>
+
+    <!-- footer -->
+    <footer class="bg-dark center text-light text-center p-3">
+        <h6>Made by <a href="https://instagram.com//tayeb_abderahim" target="_blank" class="text-primary">Abderahim</a> | CopyRight &copy; 2024</h6>
+      </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="./scripts/scriptSecond.js"></script>
+    <script src="./scripts/HTML_tags.js"></script>
+</body>
+</html>
