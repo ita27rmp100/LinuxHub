@@ -66,7 +66,8 @@
             <div class="pb-5 pt-3 container center d-flex justify-content-center align-items-center">
               <div class="row membersList" onclick="shift()">
                 <!-- Slides -->
-                <new-member name="Tayeb" role="Founder ofLinuxHub" img="ita"
+                 <%=membersPart %>
+                <!-- <new-member name="Tayeb" role="Founder ofLinuxHub" img="ita"
                 link1="#" social1="instagram"
                 link2="#" social2="github"
                 link3="#" social3="linkedin">
@@ -85,7 +86,7 @@
                 link1="#" social1="instagram"
                 link2="#" social2="github"
                 link3="#" social3="linkedin">
-                </new-member>  
+                </new-member>   -->
               </div> 
             </div>
             <ol class="carousel-indicators">
@@ -109,7 +110,7 @@
       <!-- contact us -->
         <h1 class="text-center">Contact Us</h1>
         <div class="container text-left py-4">
-          <form id="contactForm">
+          <form id="contactForm" action="/" method="post">
               <!-- Name -->
               <div class="form-group">
                   <label for="name">Full Name</label>
@@ -126,7 +127,7 @@
                   <textarea id="message" name="message" rows="5" cols="100" class="form-control" placeholder="Write your message here..." required></textarea>
               </div>
               <!-- Submit Button -->
-              <button type="submit" style="z-index:883;" class="btn btn-primary btn-block">Send Message</button>
+              <input type="submit" value="Send Message" style="z-index:883;" class="btn btn-primary btn-block">
           </form>
           <!-- Success Message -->
           <div id="successMessage" class="alert alert-success mt-4">

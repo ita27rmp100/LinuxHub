@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mysql = require("mysql")
+const qs = require("querystring")
 
 // routes
 var indexRouter = require('./routes/index');
@@ -22,7 +23,6 @@ let connection = mysql.createConnection({
 // edit on statistics statistics :
 let statisticsList = ['courses', 'tutorials', 'quizzes'];
 let instrctUpdate = `UPDATE statistics SET val = CASE \n`;
-
 let completedQueries = 0; // Track completed queries
 for (let i = 0; i < statisticsList.length; i++) {
   const stat = statisticsList[i];
@@ -42,7 +42,19 @@ for (let i = 0; i < statisticsList.length; i++) {
     }
   });
 }
-
+// Contect us's form
+app.post('/',(req,res)=>{
+  let body = ''
+  req.on("data",(data)=>{
+    body += data
+  })
+  req.on('end',()=>{
+    let result = qs.parse(body)
+    connection.query(
+      `inser into form() value("${result.name}","${result.email}","${result.message}")`,
+      function(errors,results,fields){console.log("sent")})
+  })
+})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
