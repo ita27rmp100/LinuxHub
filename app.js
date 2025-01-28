@@ -57,7 +57,6 @@ app.post('/',(req,res)=>{
         setInterval(function(){
           res.redirect("/")
         },1500)
-        console.log("message sent")
       })
   })
 })

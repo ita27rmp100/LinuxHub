@@ -1,9 +1,4 @@
-function chTypeTitle(type){
-    let title = document.title
-    document.title = "LinuxHub | " + type
-    $("#contentType").text(`Tutorials | ${type}`)
-
-}
+// filter function
 function filter(search){
     $("#list learn-card").filter(
         function(){
@@ -12,11 +7,18 @@ function filter(search){
         }
     )
 }
+// change the type of searching result 
+function chTypeTitle(type){
+    document.title = "LinuxHub | " + type
+    $("#contentType").text(`${type}`)
+    filter(type)
+}
 // filter results
 $("document").ready(
     function(){
         $(".type").addClass("btn-light m-1 p-1 rounded") // Content selection bar
-        filter(document.title)
+        $('.listCards').html(decodeURIComponent('<%- escape(list) %>'))
+        filter($("#contentType").text())
         // filter search
         $("#search").keyup(
             function() {
