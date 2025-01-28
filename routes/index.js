@@ -18,27 +18,31 @@ router.get('/', function(req, res, next) {
     values = results.map(row => row.val)
     console.log(values)
   })
-  connection.query("select * from members",function(error,results,fields){
-    fname = results.map(row => row.fullName)
-    rank = results.map(row => row.rank)
-    image = results.map(row => row.img)
-    social.github = results.map(row => row.github)
-    social.insta = results.map(row => row.insta)
-    social.linkdein = results.map(row => row.linkdeIn)
-  })
-  for(i=0;i<Object.keys(fname).length+1;i++){
-    membersPart += `<new-member name="${fname[i]} " role="${rank[i]}" img="${image[i]}"
-                    link1="${social.github[i]}" social1="instagram"
-                    link2="${social.insta[i]}" social2="github"
-                    link3="${social.linkdein[i]}" social3="linkedin">
-                    </new-member>`
+  // getting members list :
+  async function renderMembersList() {
+    try {
+      // Ensure `query` is properly defined
+      const members = await query("SELECT * FROM members");
+      const memberSlides = members.map(member =>
+          `<new-member name="${member.fullName}" role="${member.rank}" img="${member.img}"
+            link1="${member.github}" social1="github"
+            link2="${member.insta}" social2="instagram"
+            link3="${member.linkedin}" social3="linkedin">
+          </new-member>`
+      ).join('\n');
+      console.log(memberSlides);
+      return memberSlides
+    }
+    catch (error) {
+      console.error("Error:", error.message);
+    }
   }
   res.render('index',{
     views:values[0],
     courses:values[1],
     tutorials:values[2],
     quizzes:values[3],
-    membersPart:membersPart,
+    membersPart:renderMembersList()
   });
 });
 

@@ -48,10 +48,10 @@
           details="You find in <strong>LinuxHub</strong> a lot of tutorials that teaches you whatever you search about with time and easiest way.
           <h6  class='text-center'>** You Find it in youtube with multipe languages **</h6>">
           </content-type>
-          <content-type type="Quizzes" src="/learn"
+          <content-type type="Quizzes" src="/learn/quizzes"
           details="Each Linux topic includes a 10-question quiz with a timer, and your records will update afterward, helping you track your progress.">
           </content-type>
-          <content-type type="Courses" src="/learn"
+          <content-type type="Courses" src="/learn/courses"
           details="We periodically open the opportunity for you to join our online courses to learn Linux with a teacher and an exciting learning atmosphere.">
           </content-type>
           <content-type type="Tests" src="/test"
@@ -66,7 +66,7 @@
             <div class="pb-5 pt-3 container center d-flex justify-content-center align-items-center">
               <div class="row membersList" onclick="shift()">
                 <!-- Slides -->
-                 <%=membersPart %>
+                 <%-membersPart %>
                 <!-- <new-member name="Tayeb" role="Founder ofLinuxHub" img="ita"
                 link1="#" social1="instagram"
                 link2="#" social2="github"
@@ -138,5 +138,6 @@
 
     <!-- footer -->
     <%- include('./master/footer.ejs') %>
+    <script src="/javascripts/script.js"></script>
 </body>
 </html>

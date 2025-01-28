@@ -1,9 +1,18 @@
 // filter function
-function filter(search){
+function filter(search,how){
     $("#list learn-card").filter(
         function(){
             let ContainResult = $(this).text().toLowerCase().indexOf(search)
-            $(this).toggle(ContainResult > -1)
+            switch (how) {
+                case 't':
+                    $(this).toggle(ContainResult > -1)
+                    break;
+                case 'r':
+                    $(this).remove(ContainResult > -1)
+                    break;
+                default:
+                    break;
+            }
         }
     )
 }
@@ -11,19 +20,21 @@ function filter(search){
 function chTypeTitle(type){
     document.title = "LinuxHub | " + type
     $("#contentType").text(`${type}`)
-    filter(type)
+    window.location = `/learn/${type}`
 }
 // filter results
 $("document").ready(
     function(){
         $(".type").addClass("btn-light m-1 p-1 rounded") // Content selection bar
-        $('.listCards').html(decodeURIComponent('<%- escape(list) %>'))
-        filter($("#contentType").text())
+        console.log($("#contentType").text())
+        if(document.title.includes("Learn") == false){
+            filter($("#contentType").text(),'r')
+        }
         // filter search
         $("#search").keyup(
             function() {
                 let inputSearch = $(this).val().toLowerCase()
-                filter(inputSearch)
+                filter(inputSearch,'t')
             }
         )
     }

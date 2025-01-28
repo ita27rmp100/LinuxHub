@@ -9,7 +9,7 @@
     <%- include('./master/header.ejs') %>
     <!-- Title page Header -->
     <nav class="text-center text-light ctWallPaper justify-content-center align-items-center d-flex">
-        <h1 id="contentType" class="titlePage">tutorials</h1>
+        <h1 id="contentType" class="titlePage"><%=title %></h1>
     </nav>
     <nav class="container-fluid center py-3 pt-2 text-center">
         <!-- choose the type of learning content -->
@@ -26,11 +26,11 @@
               </button>
               <input type="text" id="search" class="form-control w-100" placeholder="I want to search about ...">
             </div>
-            <input type="button" onclick="filter('arabic')" value="Arabic" class="btn btn-outline-success filter">
-            <input type="button" onclick="filter('english')" value="English" class="btn btn-outline-warning filter">
-            <input type="button" onclick="filter('french')" value="French" class="btn btn-outline-primary filter">
-            <input type="button" onclick="filter('spanish')" value="Spanish" class="btn btn-outline-danger filter">
-            <input type="button" onclick="filter(' ')" value="All" class="btn btn-outline-info filter">
+            <input type="button" onclick="filter('arabic','t')" value="Arabic" class="btn btn-outline-success filter">
+            <input type="button" onclick="filter('english','t')" value="English" class="btn btn-outline-warning filter">
+            <input type="button" onclick="filter('french','t')" value="French" class="btn btn-outline-primary filter">
+            <input type="button" onclick="filter('spanish','t')" value="Spanish" class="btn btn-outline-danger filter">
+            <input type="button" onclick="filter(' ','t')" value="All" class="btn btn-outline-info filter">
         </div>
         <!-- list -->
         <div class="listCards center" id="list">
@@ -40,5 +40,6 @@
 
     <!-- footer -->
     <%- include('./master/footer.ejs') %>
+    <script src="/javascripts/scriptSecond.js"></script>    
 </body>
 </html>
