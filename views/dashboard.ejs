@@ -24,7 +24,7 @@
             </tbody>
         </table>
         <!-- general statistics -->
-        <table class="table">
+        <table class="table text-center">
             <thead>
                 <tr class="jumbotron ">
                     <th colspan="4">General Statistics</th>
@@ -33,11 +33,11 @@
                     <th>Views</th>
                     <th>Tutorials</th>
                     <th>Courses</th>
-                    <th>Courses</th>
+                    <th>Quizzes</th>
                 </tr>
             </thead>
             <tbody>
-                
+                <%-stcs %>
             </tbody>
         </table>
         <!-- Edit test's links -->
@@ -56,25 +56,25 @@
                     <tr>
                         <td>Novice</td>
                         <td>
-                            <input type="url" name="Novice" class="form-control" placeholder="https://example.com" required>
+                            <input type="url" name="Novice" value="<%=lnks[3] %>" class="form-control" placeholder="https://example.com" required>
                         </td>
                     </tr>
                     <tr>
                         <td>Beginner</td>
                         <td>
-                            <input type="url" name="Beginner" class="form-control" placeholder="https://example.com" required>
+                            <input type="url" name="Beginner" value="<%=lnks[1] %>" class="form-control" placeholder="https://example.com" required>
                         </td>
                     </tr>
                     <tr>
                         <td>Intermediate</td>
                         <td>
-                            <input type="url" name="Intermediate" class="form-control" placeholder="https://example.com" required>
+                            <input type="url" name="Intermediate" value="<%=lnks[2] %>" class="form-control" placeholder="https://example.com" required>
                         </td>
                     </tr>
                     <tr>
                         <td>Advanced</td>
                         <td>
-                            <input type="url" name="advanced" class="form-control" placeholder="https://example.com" required>
+                            <input type="url" name="advanced" value="<%=lnks[0] %>" class="form-control" placeholder="https://example.com" required>
                         </td>
                     </tr>
             </tbody>
@@ -102,7 +102,7 @@
                 </tr>
             </thead>
             <tbody>
-                
+                <%-learnsTable %>
             </tbody>
             <tfoot>
                 <tr>
