@@ -26,6 +26,7 @@ router.get('/',function(req,res,next){
                     </tr>`
             MessagesTable += message
         }
+        MessagesTable += `<tfoot><tr><th colspan="3">Total messages</th><td>${Object.keys(message).length}</td></tfoot>`
         res.render('dashboard',{UsersMessages: MessagesTable})
     })
 })

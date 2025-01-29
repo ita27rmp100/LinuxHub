@@ -8,8 +8,8 @@
     <%- include('./master/header') %>
     <nav class="container-fluid py-3 pt-2">
         <!-- form response -->
-        <table class="table table-striped rounded table-bordered border border-secondry m-2">
-            <thead class="text-center">
+        <table class="table">
+            <thead>
                 <tr class="jumbotron ">
                     <th colspan="4">Users' messages</th>
                 </tr>
@@ -24,8 +24,8 @@
             </tbody>
         </table>
         <!-- general statistics -->
-        <table class="table table-striped rounded table-bordered border border-secondry m-2">
-            <thead class="text-center">
+        <table class="table">
+            <thead>
                 <tr class="jumbotron ">
                     <th colspan="4">General Statistics</th>
                 </tr>
@@ -40,8 +40,94 @@
                 
             </tbody>
         </table>
+        <!-- Edit test's links -->
+        <form action="/da4ebrd" method="post">
+         <table class="table">
+            <thead>
+                <tr class="jumbotron">
+                    <th colspan="2">Test links</th>
+                </tr>
+                <tr>
+                    <th width="150px">Level</th>
+                    <th>Links</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td>Novice</td>
+                        <td>
+                            <input type="url" name="Novice" class="form-control" placeholder="https://example.com" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Beginner</td>
+                        <td>
+                            <input type="url" name="Beginner" class="form-control" placeholder="https://example.com" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Intermediate</td>
+                        <td>
+                            <input type="url" name="Intermediate" class="form-control" placeholder="https://example.com" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Advanced</td>
+                        <td>
+                            <input type="url" name="advanced" class="form-control" placeholder="https://example.com" required>
+                        </td>
+                    </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2" >
+                        <input type="submit" class="btn btn-success" value="Save changes" id="savingLinks">
+                    </td> 
+                </tr>
+            </tfoot>
+         </table>
+        </form>
+         <!-- list of learn's content  -->
+        <table class="table">
+            <thead>
+                <tr class="jumbotron ">
+                    <th colspan="5">Learn Content</th>
+                </tr>
+                <tr>
+                    <th>Title</th>
+                    <th>Type</th>
+                    <th>langauge</th>
+                    <th>link</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5">
+                        <a class="btn btn-success text-light" href="/add" target="_blank">Add New</a>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
     </nav>
-
     <%- include('./master/footer') %>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.table').addClass("table-striped rounded table-bordered border border-secondry m-2")
+            $('table').find('tfoot , thead').attr('class',"text-center")
+            $("#modalCtrl").click(function(){
+                $("#addNew").modal('show');
+            });
+            $('#savingLinks').click(function(){
+                $(this).val('saved !')
+            })
+        })
+    </script>
 </body>
 </html>
