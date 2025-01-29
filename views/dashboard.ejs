@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./master/head') %>
+    <title>LinuxHub | DashBoard</title>
+</head>
+<body>
+    <%- include('./master/header') %>
+    <nav class="container-fluid py-3 pt-2">
+        <!-- form response -->
+        <table class="table table-striped rounded table-bordered border border-secondry m-2">
+            <thead class="text-center">
+                <tr class="jumbotron ">
+                    <th colspan="4">Users' messages</th>
+                </tr>
+                <tr>
+                    <th width="20%">Full name :</th>
+                    <th width="20%">Email :</th>
+                    <th colspan="2">Message :</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%-UsersMessages %>
+            </tbody>
+        </table>
+        <!-- general statistics -->
+        <table class="table table-striped rounded table-bordered border border-secondry m-2">
+            <thead class="text-center">
+                <tr class="jumbotron ">
+                    <th colspan="4">General Statistics</th>
+                </tr>
+                <tr>
+                    <th>Views</th>
+                    <th>Tutorials</th>
+                    <th>Courses</th>
+                    <th>Courses</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </nav>
+
+    <%- include('./master/footer') %>
+</body>
+</html>

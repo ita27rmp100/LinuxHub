@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 const sql = require("mysql")
 
-
 // connection with DB
 let connection = sql.createConnection({
   host:'127.0.0.1',
@@ -13,7 +12,7 @@ let connection = sql.createConnection({
 /* GET home page. */
 let membersPart = '' , values = [] , social = {github:[],insta:[],linkdein:[]} , fname , rank , image
 router.get('/', function(req, res, next) {
-  // getting statistics :
+  // // getting statistics :
   connection.query("select * from statistics",function(error,results,fields){
     values = results.map(row => row.val)
     console.log(values)

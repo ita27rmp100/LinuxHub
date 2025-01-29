@@ -10,6 +10,9 @@ const http = require("http")
 // routes
 var indexRouter = require('./routes/index');
 var learnRouter = require('./routes/learnContent');
+var testRouter = require('./routes/tests')
+var logInAdminRouter = require('./routes/login')
+var dashboardRouter = require('./routes/dashboard')
 const { stat } = require('fs');
 
 var app = express();
@@ -61,6 +64,30 @@ app.post('/',(req,res)=>{
   })
 })
 
+//LoginToDashboard(forAdmin)
+let attempts = 0
+app.post('/login-admin',(req,res)=>{
+  let body = ''
+  req.on("data",(data)=>{
+    body += data
+  })
+  req.on('end',()=>{
+    let result = qs.parse(body)
+    let username = result.username , password = result.password
+    if(username==='linuxhubAdmin' && password==="4c6fg79&#60;"){
+      console.log("logged on")
+      res.redirect('/da4ebrd')
+    }
+    else{
+      if (attempts<3) {
+        alert("either username or password is incorrect ...\n Please try again without refreshing the page")
+        attempts = 0
+      } else {
+        res.status("404").send("Blocked , you couldn't try now")
+      }
+    }
+  })
+})
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -73,6 +100,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/learn', learnRouter);
+app.use('/test',testRouter);
+app.use('/4c6fg79',logInAdminRouter);
+app.use('/da4ebrd',dashboardRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
