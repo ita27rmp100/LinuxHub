@@ -37,5 +37,14 @@ $("document").ready(
                 filter(inputSearch,'t')
             }
         )
+        // dashboard styling 
+        $('.table').addClass("table-striped rounded table-bordered border border-secondry m-2")
+        $('table').find('tfoot , thead').attr('class',"text-center")
+        $("#modalCtrl").click(function(){
+            $("#addNew").modal('show');
+        });
+        $('#savingLinks').click(function(){
+            $(this).val('saved !')
+        })
     }
 )
