@@ -6,6 +6,7 @@ var logger = require('morgan');
 const mysql = require("mysql")
 const qs = require("querystring")
 const http = require("http")
+const session = require('express-session')
 
 // routes
 var indexRouter = require('./routes/index');
@@ -16,6 +17,10 @@ var dashboardRouter = require('./routes/dashboard')
 const { stat } = require('fs');
 
 var app = express();
+// set up the session milldware
+app.use(session({
+  secret:"it's secret"
+}))
 // connection with database 
 let connection = mysql.createConnection({
   host:'127.0.0.1',
@@ -39,7 +44,6 @@ for (let i = 0; i < statisticsList.length; i++) {
     // Once all queries are done, finalize and run the UPDATE
     if (completedQueries === statisticsList.length) {
       instrctUpdate += `END WHERE statistic IN ('courses', 'tutorials', 'quizzes');`;
-
       connection.query(instrctUpdate);
     }
   });
@@ -64,7 +68,7 @@ app.post('/',(req,res)=>{
 
 //LoginToDashboard(forAdmin)
 let attempts = 0
-app.post('/login-admin',(req,res)=>{
+app.post('/4c6fg79',(req,res)=>{
   let body = ''
   req.on("data",(data)=>{
     body += data
@@ -72,7 +76,7 @@ app.post('/login-admin',(req,res)=>{
   req.on('end',()=>{
     let result = qs.parse(body)
     if(result.username==='linuxhubAdmin' && result.password==="4c6fg79&#60;"){
-      console.log("logged on")
+      req.session.admin = true;
       res.redirect('/da4ebrd')
     }
     else{
