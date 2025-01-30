@@ -40,9 +40,7 @@ for (let i = 0; i < statisticsList.length; i++) {
     if (completedQueries === statisticsList.length) {
       instrctUpdate += `END WHERE statistic IN ('courses', 'tutorials', 'quizzes');`;
 
-      connection.query(instrctUpdate, function () {
-        console.log('Statistics updated successfully.');
-      });
+      connection.query(instrctUpdate);
     }
   });
 }

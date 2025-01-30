@@ -14,8 +14,8 @@
             <h1>LinuxHub</h1>
             <q id="greet">Our platform is your guide to perfectation in linux.</q>
             <section class="p-3 left">
-              <input type="button" value="Continue Learning" class="btn text-light btn-outline-light">
-              <input type="button" value="Join us" class="btn text-light btn-success">
+              <input type="button" value="Continue Learning" class="btn text-light btn-outline-light" onclick="go('learn')">
+              <input type="button" value="Take a test !" class="btn text-light btn-success" onclick="go('test')">
             </section>
         </div>
         <div class="welcome-parent">
@@ -100,10 +100,10 @@
         <h1>Our statistics</h1>
         <div class="jumbotron container st mt-4 text-center status" id="stauts">
           <div class="row justify-content-around">
-            <new-ach value="<%=views %>" of="Views" idCild="members"></new-ach>
-            <new-ach value="<%=courses %>" of="Courses" idCild="challenges"></new-ach>
-            <new-ach value="<%=tutorials %>" of="Tutorials" idCild="tutorials"></new-ach>
-            <new-ach value="<%=quizzes %>" of="Quizzes" idCild="quiz"></new-ach>
+            <new-ach value="<%=values[0].val %>" of="Views" idCild="members"></new-ach>
+            <new-ach value="<%=values[1].val %>" of="Courses" idCild="challenges"></new-ach>
+            <new-ach value="<%=values[2].val %>" of="Tutorials" idCild="tutorials"></new-ach>
+            <new-ach value="<%=values[3].val %>" of="Quizzes" idCild="quiz"></new-ach>
           </div>
         </div>
         <hr>

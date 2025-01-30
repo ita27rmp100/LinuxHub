@@ -67,6 +67,8 @@ function shift(){
             this.setAttribute('class','col m-3')
         }
     })
+// window location
+let go = (a) => {window.location = `/${a}`}
 // running the counters when the page be ready :
 $("document").ready(
     function(){

@@ -10,39 +10,48 @@ let connection = sql.createConnection({
   database:'linuxhub'
 })
 /* GET home page. */
-let membersPart = '' , values = [] , social = {github:[],insta:[],linkdein:[]} , fname , rank , image
 router.get('/', function(req, res, next) {
-  // // getting statistics :
-  connection.query("select * from statistics",function(error,results,fields){
-    values = results.map(row => row.val)
-    console.log(values)
+  let membersPart = '' , values = [] , member
+  // getting statistics :
+  connection.query("select * from statistics,members",function(error,results,fields){
+    console.log('result : ',results)
+    //members list :
+    let members = []
+    for(let i=0;i<(Object.keys(results).length);i++){
+      members.push({
+        fullName:results[i].fullName,
+        rank:results[i].rank,
+        img:results[i].img,
+        github:results[i].github,
+        insta:results[i].insta,
+        linkdeIn:results[i].linkdeIn
+      })
+      values.push({
+        statistic:results[i].statistic,
+        val:results[i].val
+      })
+    }
+    members = members.filter((value,index,self) =>
+      index === self.findIndex((t) => t.fullName === value.fullName)
+    );
+    values = values.filter((value,index,self)=>
+      index === self.findIndex((t) => t.statistic === value.statistic)
+    )
+    console.log('members : ',members,'\nValues : ',values)
+    for(i=0;i<(Object.keys(members).length);i++){
+      member =`<new-member name="${members[i].fullName}" role="${members[i].rank}" img="images/members/${members[i].img}"
+                      link1="https://github.com/${members[i].github}" social1="github"
+                      link2="https://instgram.com/${members[i].insta}" social2="instagram"
+                      link3="https://linkedin.com/${members[i].linkedin}" social3="linkedin">
+                    </new-member>`
+      membersPart += member
+    }
+    console.log(membersPart)
+    res.render('index',{
+      membersPart,values
+    });
   })
-  // getting members list :
-  async function renderMembersList() {
-    try {
-      // Ensure `query` is properly defined
-      const members = await query("SELECT * FROM members");
-      const memberSlides = members.map(member =>
-          `<new-member name="${member.fullName}" role="${member.rank}" img="${member.img}"
-            link1="${member.github}" social1="github"
-            link2="${member.insta}" social2="instagram"
-            link3="${member.linkedin}" social3="linkedin">
-          </new-member>`
-      ).join('\n');
-      console.log(memberSlides);
-      return memberSlides
-    }
-    catch (error) {
-      console.error("Error:", error.message);
-    }
-  }
-  res.render('index',{
-    views:values[0],
-    courses:values[1],
-    tutorials:values[2],
-    quizzes:values[3],
-    membersPart:renderMembersList()
-  });
+  
 });
 
 module.exports = router;
