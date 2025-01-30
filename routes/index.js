@@ -21,7 +21,7 @@ router.get('/', function(req, res, next) {
       members.push({
         fullName:results[i].fullName,
         rank:results[i].rank,
-        img:results[i].img,
+        logo:results[i].logo,
         github:results[i].github,
         insta:results[i].insta,
         linkdeIn:results[i].linkdeIn
@@ -39,7 +39,7 @@ router.get('/', function(req, res, next) {
     )
     console.log('members : ',members,'\nValues : ',values)
     for(i=0;i<(Object.keys(members).length);i++){
-      member =`<new-member name="${members[i].fullName}" role="${members[i].rank}" img="images/members/${members[i].img}"
+      member =`<new-member name="${members[i].fullName}" role="${members[i].rank}" img="images/members/${members[i].logo}"
                       link1="https://github.com/${members[i].github}" social1="github"
                       link2="https://instgram.com/${members[i].insta}" social2="instagram"
                       link3="https://linkedin.com/${members[i].linkedin}" social3="linkedin">

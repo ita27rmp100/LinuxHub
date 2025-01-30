@@ -40,6 +40,8 @@ $("document").ready(
         // dashboard styling 
         $('.table').addClass("table-striped rounded table-bordered border border-secondry m-2")
         $('table').find('tfoot , thead').attr('class',"text-center")
+        $('.form-group').addClass("p-2")
+        $('.form-group').find('.input-group').addClass("pt-2")
         $("#modalCtrl").click(function(){
             $("#addNew").modal('show');
         });

@@ -112,7 +112,83 @@
                 </tr>
             </tfoot>
         </table>
+        <div class="container-fluid formsDivParent">
+            <!-- add content learn -->
+            <div class="border p-3 rounded">
+                <form method="post" action="/">
+                    <div class="form-group">
+                      <label for="exampleFormControlInput1">Full name :</label>
+                      <input type="text" name="fullName" maxlength="30" class="form-control" placeholder="enter the member's name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Rank :</label>
+                        <input type="text" name="rank" maxlength="30" class="form-control" placeholder="for example : designer ... ">
+                    </div>
+                    <div class="input-group pt-2">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="">GitHub :</span>
+                        </div>
+                        <input type="url" name="github" class="form-control">
+                    </div>
+                    <div class="input-group pt-2">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Instagram :</span>
+                        </div>
+                        <input type="url" name="insta" class="form-control">
+                    </div>
+                    <div class="input-group pt-2">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="">LinkedIn :</span>
+                        </div>
+                        <input type="url" name="linkdeIn" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="img">Logo : </label>
+                        <input type="file" name="logo" class="form-control-file" accept=".jpg .png .jpeg">
+                    </div>
+                    <input type="submit" value="Add new" class="btn btn-success float-center">
+                </form>
+            </div>
+            <!-- add new team's members -->
+            <div class="border p-3 rounded">
+                <form method="post" action="/learn">
+                    <div class="form-group">
+                      <label for="title">Title :</label>
+                      <input type="text" name="title" maxlength="30" class="form-control" placeholder="for ex : what's linux ?!">
+                    </div>
+                    <div class="form-group">
+                        <label for="etype">Type :</label>
+                        <select class="form-control" name="etype">
+                          <option value="tutorials">Tutorials</option>
+                          <option value="courses">Courses</option>
+                          <option value="quizzes">Quizzes</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="lang">Langauge :</label>
+                        <select class="custom-select" name="lang">
+                          <option value="tutorials">Arabic</option>
+                          <option value="courses">English</option>
+                          <option value="quizzes">French</option>
+                          <option value="quizzes">Spanish</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="">Link :</span>
+                        </div>
+                        <input type="url" name="insta" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="img">Wallpaper Image</label>
+                        <input type="file" name="img" class="form-control-file" accept=".jpg .png .jpeg">
+                    </div>
+                    <input type="submit" value="Add new" class="btn btn-success float-center">
+                </form>
+            </div>
+        </div>
     </nav>
     <%- include('./master/footer') %>
+    <script src="/javascripts/scriptSecond.js"></script>
 </body>
 </html>

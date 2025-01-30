@@ -95,7 +95,20 @@ footer{
 }
 /* Dashboard */
     /* Adding divs */
-    
+    .formsDivParent {
+        display: grid;
+        gap: 10px;
+    }
+    @media (min-width: 768px) {
+        .formsDivParent {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media (max-width: 767.98px) {
+        .formsDivParent {
+            grid-template-columns: 1fr;
+        }
+    }
 
 /* responsive */
 @media screen and (max-width:400px) {
