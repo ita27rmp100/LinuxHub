@@ -69,10 +69,11 @@ function shift(){
     })
 // window location
 let go = (a) => {window.location = `/${a}`}
+// jQuery edit css
+
 // running the counters when the page be ready :
 $("document").ready(
     function(){
-        // landing page elements : class name 'lp-elem'
         // statistics
         $('.status').css("opacity","1",2000)
         console.log($(".membersList").innerWidth())

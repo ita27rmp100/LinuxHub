@@ -11,7 +11,7 @@ let connection = sql.createConnection({
 });
 
 router.get('/:addWhat?',function(req,res){
-    let MessagesTable = '' , learnsTable = ''
+    let MessagesTable = '' , learnsTable = '' , values = []
     if(true){
         connection.query('select * from form,testlinks,learncontent,statistics',function(err,result,fields){
             let messages = [] , learns = [] , message = '',content = ''
@@ -26,19 +26,27 @@ router.get('/:addWhat?',function(req,res){
                     title:result[i].title,
                     etype:result[i].etype,
                     lang:result[i].lang,
-                    img:result[i].img,
                     link:result[i].lnk,
                 })
+                values.push({
+                    statistic:result[i].statistic,
+                    val:result[i].val
+                })
             }
+            // statistics sum 
+            let sumStcs = values[1].val + values[2].val + values[3].val + values[4].val
             // filtering
             messages = messages.filter((value, index, self) =>
                 index === self.findIndex((t) => t.email === value.email && t.fullName === value.fullName && t.message === value.message)
             );
             learns = learns.filter((value, index, self) =>
                 index === self.findIndex((t) => 
-                    t.title === value.title && t.etype === value.etype && t.lang === value.lang && t.img === value.img && t.link === value.link
+                    t.title === value.title && t.etype === value.etype && t.lang === value.lang && t.link === value.link
                 )
             );
+            values = values.filter((value,index,self)=>
+                index === self.findIndex((t) => t.statistic === value.statistic)
+            )
             // HTML code generating
             for(i=0;i<(Object.keys(messages).length);i++){
                 message=`<tr>
@@ -60,15 +68,14 @@ router.get('/:addWhat?',function(req,res){
                             <td>${learns[i].etype}</td>
                             <td>${learns[i].lang}</td>
                             <td>${learns[i].link}</td>
-                            <td>${learns[i].img}</td>
                         </tr>`
                 learnsTable += content
             }
             stcs=`<tr>
-                    <td>${result[0].val}<t/d>
-                    <td>${result[8].val}</td>
-                    <td>${result[4].val}</td>
-                    <td>${result[12].val}</td>
+                    <td>${values[0].val}<t/d>
+                    <td>${values[3].val}</td>
+                    <td>${values[2].val}</td>
+                    <td>${values[1].val}</td>
                 </tr>`
             res.render('dashboard',{
                 UsersMessages: MessagesTable,

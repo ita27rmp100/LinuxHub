@@ -119,11 +119,8 @@ app.post("/da4ebrd",(req,res)=>{
 })
 // add new learn content
 app.post('/da4ebrd/addcntnt',(req,res)=>{
-  let file = req.files.img;
-  let filename = file.name
-  file.mv(`./public/images/learn`+filename)
   let body = req.body
-  connection.query(`insert into learnContent() value("${body.title}","${body.etype}","${body.lang}","${filename}","${body.lnk}")`,
+  connection.query(`insert into learnContent() value("${body.title}","${body.etype}","${body.lang}","${body.lnk}")`,
     function(){
       res.redirect("/")
     }

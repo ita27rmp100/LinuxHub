@@ -56,9 +56,8 @@ class MemberInfo extends HTMLElement{
 class cardLearn extends HTMLElement{
     connectedCallback(){
         this.innerHTML=`<div class="card">
-                            <img src="images/learn/${this.getAttribute('img')}" alt="" class="card-img-top">
                             <div class="card-body text-left">
-                                <h4 class="card-title">${this.getAttribute("title")}</h4>
+                                <h3 class="card-title">${this.getAttribute("title")}</h3>
                                 <p class="card-text">#${this.getAttribute("lang")} #${this.getAttribute("type")}</p>
                                 <a href="${this.getAttribute("link")}" class="btn btn-primary float-right">Watch Now</a>
                             </div>
