@@ -33,7 +33,7 @@ class ContentType extends HTMLElement{
 class MemberInfo extends HTMLElement{
     connectedCallback(){
     this.innerHTML = `<div class="column center" style="width: 300px;" style="background-image: url(/images/members/ita.jpg);">
-                        <img src="images/members/${this.getAttribute("img")}.jpg" class="rounded-circle p-2 card-head center" width="300px" height="300px" alt="">
+                        <img src="${this.getAttribute("img")}" class="rounded-circle p-2 card-head center" width="300px" height="300px" alt="">
                         <div class="column p-1">
                         <h4>${this.getAttribute("name")}</h4>
                         <p class="m-0">${this.getAttribute("role")}</p>

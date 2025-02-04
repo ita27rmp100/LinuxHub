@@ -31,27 +31,30 @@ let connection = mysql.createConnection({
   password:'',
   database:'linuxhub'
 })
-
 // edit on statistics statistics :
 let statisticsList = ['courses', 'tutorials', 'quizzes'];
 let instrctUpdate = `UPDATE statistics SET val = CASE \n`;
 let completedQueries = 0; // Track completed queries
 for (let i = 0; i < statisticsList.length; i++) {
   const stat = statisticsList[i];
-
   connection.query(`SELECT etype FROM learncontent WHERE etype = ?`, [stat], function (_, results) {
     instrctUpdate += `WHEN statistic = "${stat}" THEN ${results.length + 1} \n`;
-
     completedQueries++;
-
-    // Once all queries are done, finalize and run the UPDATE
     if (completedQueries === statisticsList.length) {
       instrctUpdate += `END WHERE statistic IN ('courses', 'tutorials', 'quizzes');`;
       connection.query(instrctUpdate);
     }
   });
 }
-// Contect us's form
+connection.query(
+  `update statistics
+  set val=val+1
+  where statistic="views"`,
+  function(){
+    console.log("done")
+  }
+)
+// contact us
 app.post('/',(req,res)=>{
   let body = ''
   req.on("data",(data)=>{
@@ -68,7 +71,6 @@ app.post('/',(req,res)=>{
       })
   })
 })
-
 //LoginToDashboard(forAdmin)
 let attempts = 0
 app.post('/4c6fg79',(req,res)=>{

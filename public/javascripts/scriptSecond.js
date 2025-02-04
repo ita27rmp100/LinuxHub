@@ -22,10 +22,19 @@ function chTypeTitle(type){
     $("#contentType").text(`${type}`)
     window.location = `/learn/${type}`
 }
+// jQuery adding on css
+// dashboard styling 
+$('.table').addClass("table-striped rounded table-bordered border border-secondry m-2")
+$('table').find('tfoot , thead').attr('class',"text-center")
+$('.form-group').addClass("p-2")
+$('.form-group').find('.input-group').addClass("pt-2")
+$("#modalCtrl").click(function(){
+    $("#addNew").modal('show');
+});
+$(".type").addClass("btn-light m-1 p-1 rounded") // Content selection bar
 // filter results
 $("document").ready(
     function(){
-        $(".type").addClass("btn-light m-1 p-1 rounded") // Content selection bar
         console.log($("#contentType").text())
         if(document.title.includes("Learn") == false){
             filter($("#contentType").text(),'r')
@@ -37,14 +46,7 @@ $("document").ready(
                 filter(inputSearch,'t')
             }
         )
-        // dashboard styling 
-        $('.table').addClass("table-striped rounded table-bordered border border-secondry m-2")
-        $('table').find('tfoot , thead').attr('class',"text-center")
-        $('.form-group').addClass("p-2")
-        $('.form-group').find('.input-group').addClass("pt-2")
-        $("#modalCtrl").click(function(){
-            $("#addNew").modal('show');
-        });
+        
         $('#savingLinks').click(function(){
             $(this).val('saved !')
         })

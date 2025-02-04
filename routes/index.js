@@ -14,7 +14,6 @@ router.get('/', function(req, res, next) {
   let membersPart = '' , values = [] , member
   // getting statistics :
   connection.query("select * from statistics,members",function(error,results,fields){
-    console.log('result : ',results)
     //members list :
     let members = []
     for(let i=0;i<(Object.keys(results).length);i++){
@@ -37,7 +36,6 @@ router.get('/', function(req, res, next) {
     values = values.filter((value,index,self)=>
       index === self.findIndex((t) => t.statistic === value.statistic)
     )
-    console.log('members : ',members,'\nValues : ',values)
     for(i=0;i<(Object.keys(members).length);i++){
       member =`<new-member name="${members[i].fullName}" role="${members[i].rank}" img="images/members/${members[i].logo}"
                       link1="https://github.com/${members[i].github}" social1="github"
@@ -46,7 +44,6 @@ router.get('/', function(req, res, next) {
                     </new-member>`
       membersPart += member
     }
-    console.log(membersPart)
     res.render('index',{
       membersPart,values
     });
