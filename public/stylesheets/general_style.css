@@ -27,6 +27,18 @@
 .welcome-parent > h1 {
     font-size:78px;
 }
+.sociaux{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    gap:10px
+}
+.social{
+    width:40px;
+    padding:3px;
+    background:transparent;
+    filter:invert(1);
+}
 /* features grid */
 .features , .PlatformContent{
     display: grid;
@@ -113,4 +125,13 @@ footer{
 /* responsive */
 @media screen and (max-width:400px) {
     .welcome-parent > h1 {font-size:55px;}
+}
+@media screen and (max-width:950px) {
+    /* navbar */
+    .nav{
+        display:none;
+        text-align:center;
+        height: 230px;
+        z-index:24834;
+    }
 }

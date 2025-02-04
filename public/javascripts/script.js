@@ -69,6 +69,7 @@ function shift(){
     })
 // window location
 let go = (a) => {window.location = `/${a}`}
+let goSm = (lnk) => {window.location = `https://${lnk}`}
 // jQuery edit css
 
 // running the counters when the page be ready :

@@ -131,7 +131,7 @@ app.post('/da4ebrd/addmem',(req,res)=>{
   console.log(req.files)
   let file = req.files.logo;
   let filename = file.name
-  file.mv('./public/images/members'+filename)
+  file.mv('./public/images/members/'+filename)
   let body = req.body
   connection.query(
     `insert into members value("${body.fullName}","${body.rank}","${filename}","${body.github}","${body.insta}","${body.linkdeIn}")`,

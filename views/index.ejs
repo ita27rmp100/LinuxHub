@@ -17,6 +17,12 @@
               <input type="button" value="Continue Learning" class="btn text-light btn-outline-light" onclick="go('learn')">
               <input type="button" value="Take a test !" class="btn text-light btn-success" onclick="go('test')">
             </section>
+            <section class="p-3 center sociaux">
+                <img src="images/icons/social/youtube.png" alt="" width="25px" class="btn social" onclick="goSm('youtube.com/linuxhub')">
+                <img src="images/icons/social/telegram.png" alt="" width="25px" class="btn social" onclick="goSm('t.me/linuxhub')">
+                <img src="images/icons/social/twitter.png" alt="" width="25px" class="btn social" onclick="goSm('x.com/linuxhub')">
+                <img src="images/icons/social/instagram.png" alt="" width="25px" class="btn social" onclick="goSm('instagram.com/linuxhub')">
+            </section>
         </div>
         <div class="welcome-parent">
             <img src="images/LinuxHub.png" alt="" width="300">
@@ -135,7 +141,6 @@
           </div>
         </div>
     </nav>
-
     <!-- footer -->
     <%- include('./master/footer.ejs') %>
     <script src="/javascripts/script.js"></script>
