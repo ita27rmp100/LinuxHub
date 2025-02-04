@@ -7,7 +7,8 @@ const mysql = require("mysql")
 const qs = require("querystring")
 const http = require("http")
 const session = require('express-session')
-
+const upload = require("express-fileupload")
+const fs = require("fs")
 // routes
 var indexRouter = require('./routes/index');
 var learnRouter = require('./routes/learnContent');
@@ -21,6 +22,8 @@ var app = express();
 app.use(session({
   secret:"it's secret"
 }))
+//  set up the form
+app.use(upload())
 // connection with database 
 let connection = mysql.createConnection({
   host:'127.0.0.1',
@@ -89,6 +92,7 @@ app.post('/4c6fg79',(req,res)=>{
     }
   })
 })
+// edit level links
 app.post("/da4ebrd",(req,res)=>{
   let body = ''
   req.on("data",(data)=>{
@@ -111,8 +115,42 @@ app.post("/da4ebrd",(req,res)=>{
     )
   })
 })
-
-
+// add new learn content
+app.post('/da4ebrd/addcntnt',(req,res)=>{
+  let file = req.files.img;
+  let filename = file.name
+  file.mv(`./public/images/learn`+filename)
+  let body = req.body
+  connection.query(`insert into learnContent() value("${body.title}","${body.etype}","${body.lang}","${filename}","${body.lnk}")`,
+    function(){
+      res.redirect("/")
+    }
+  )
+})
+// add new member :
+app.post('/da4ebrd/addmem',(req,res)=>{
+  console.log(req.files)
+  let file = req.files.logo;
+  let filename = file.name
+  file.mv('./public/images/members'+filename)
+  let body = req.body
+  connection.query(
+    `insert into members value("${body.fullName}","${body.rank}","${filename}","${body.github}","${body.insta}","${body.linkdeIn}")`,
+    function(err){
+      try {
+        res.redirect('/#members')
+      } catch (error) {
+        res.send(err.message)
+      }
+    }
+  )
+})
+// log-out
+app.get("/da4ebrd/logout",(req,res)=>{
+  req.session.admin = false;
+  console.log("logout")
+  res.redirect('/4c6fg79')
+})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

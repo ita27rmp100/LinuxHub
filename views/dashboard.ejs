@@ -107,15 +107,15 @@
             <tfoot>
                 <tr>
                     <td colspan="5">
-                        <a class="btn btn-success text-light" href="/add" target="_blank">Add New</a>
+                        <a class="btn btn-success text-light" href="#learn-add" target="_blank">Add New</a>
                     </td>
                 </tr>
             </tfoot>
         </table>
         <div class="container-fluid formsDivParent">
-            <!-- add content learn -->
-            <div class="border p-3 rounded">
-                <form method="post" action="/">
+            <!-- add member -->
+            <div class="border p-3 rounded" id="learn-add">
+                <form method="post" action="/da4ebrd/addmem" enctype="multipart/form-data">
                     <div class="form-group">
                       <label for="exampleFormControlInput1">Full name :</label>
                       <input type="text" name="fullName" maxlength="30" class="form-control" placeholder="enter the member's name">
@@ -143,15 +143,15 @@
                         <input type="url" name="linkdeIn" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="img">Logo : </label>
-                        <input type="file" name="logo" class="form-control-file" accept=".jpg .png .jpeg">
+                        <label for="logo">Logo : </label>
+                        <input type="file" name="logo" class="form-control-file">
                     </div>
                     <input type="submit" value="Add new" class="btn btn-success float-center">
                 </form>
             </div>
-            <!-- add new team's members -->
+            <!-- add content learn card -->
             <div class="border p-3 rounded">
-                <form method="post" action="/learn">
+                <form method="post" action="/da4ebrd/addcntnt" enctype="multipart/form-data">
                     <div class="form-group">
                       <label for="title">Title :</label>
                       <input type="text" name="title" maxlength="30" class="form-control" placeholder="for ex : what's linux ?!">
@@ -166,7 +166,7 @@
                     </div>
                     <div class="form-group">
                         <label for="lang">Langauge :</label>
-                        <select class="custom-select" name="lang">
+                        <select class="form-control" name="lang">
                           <option value="tutorials">Arabic</option>
                           <option value="courses">English</option>
                           <option value="quizzes">French</option>
@@ -177,15 +177,20 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="">Link :</span>
                         </div>
-                        <input type="url" name="insta" class="form-control">
+                        <input type="url" name="lnk" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="img">Wallpaper Image</label>
-                        <input type="file" name="img" class="form-control-file" accept=".jpg .png .jpeg">
+                        <input type="file" name="img" class="form-control-file">
                     </div>
                     <input type="submit" value="Add new" class="btn btn-success float-center">
                 </form>
             </div>
+        </div>
+        <div class="w-100 py-5">
+           <form action="/da4ebrd/logout" method="get">
+                <input type="submit" value="Log out" class="btn btn-danger float-right">
+           </form> 
         </div>
     </nav>
     <%- include('./master/footer') %>

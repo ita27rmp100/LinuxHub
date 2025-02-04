@@ -10,11 +10,10 @@ let connection = sql.createConnection({
   database: 'linuxhub'
 });
 
-router.get('/',function(req,res){
+router.get('/:addWhat?',function(req,res){
     let MessagesTable = '' , learnsTable = ''
-    if(req.session.admin){
+    if(true){
         connection.query('select * from form,testlinks,learncontent,statistics',function(err,result,fields){
-            console.log(result)
             let messages = [] , learns = [] , message = '',content = ''
             let lnks = new Array(result[0].link,result[1].link,result[2].link,result[3].link)
             for(let i=0;i<Object.keys(result).length;i++){
@@ -65,7 +64,6 @@ router.get('/',function(req,res){
                         </tr>`
                 learnsTable += content
             }
-            console.log(result)
             stcs=`<tr>
                     <td>${result[0].val}<t/d>
                     <td>${result[8].val}</td>
@@ -79,9 +77,8 @@ router.get('/',function(req,res){
         })
     }
     else{
-        res.send("Error , you don't have the permission to access this page.\nOnly admins can access it.")
+        res.send("Error , you don't have the permission to access this page.\nOnly admins can access it ... '<a href='/4c6fg79'>Login</a>'")
     }
-    
 })
 
 module.exports = router
